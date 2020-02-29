@@ -79,7 +79,7 @@ macro(GLOG_REPORT_NOT_FOUND REASON_MSG)
   # been found so that user does not have to toggle to advanced view.
   mark_as_advanced(CLEAR GLOG_INCLUDE_DIR
                          GLOG_LIBRARY)
-
+#SET(Glog_INCLUDE_DIRS ${PROJECT_SOURCE_DIR}/thirdparty/glog/src/windows)
   glog_reset_find_library_prefix()
 
   # Note <package>_FIND_[REQUIRED/QUIETLY] variables defined by FindPackage()

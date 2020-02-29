@@ -1,18 +1,30 @@
-SET(PROJECT_NAME DSO)
+cmake_minimum_required(VERSION 2.8.3)
 
-PROJECT(${PROJECT_NAME})
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+SET(PROJECT_NAME dso)
+project(${PROJECT_NAME})
+#PROJECT(${PROJECT_NAME})
 #set(CMAKE_VERBOSE_MAKEFILE ON)
 
 
 set(BUILD_TYPE Release)
 #set(BUILD_TYPE RelWithDebInfo)
 
-set(EXECUTABLE_OUTPUT_PATH bin)
+#set(EXECUTABLE_OUTPUT_PATH bin)
 set(LIBRARY_OUTPUT_PATH lib)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 # required libraries
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+
+  std_msgs
+  geometry_msgs
+  message_generation
+  sensor_msgs  
+ cv_bridge  
+ image_transport  
+  genmsg
+)
 find_package(SuiteParse REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(Boost COMPONENTS system thread) 
@@ -22,7 +34,18 @@ find_package(LibZip QUIET)
 find_package(Pangolin 0.2 QUIET)
 find_package(OpenCV QUIET)
 
+#SET(Glog_INCLUDE_DIRS ${PROJECT_SOURCE_DIR}/thirdparty/glog/src/windows)
 find_package(Glog REQUIRED)
+
+catkin_package(
+  INCLUDE_DIRS #include
+
+#  LIBRARIES struck
+#  CATKIN_DEPENDS roscpp rospy std_msgs
+#  DEPENDS system_lib
+)
+
+
 include_directories(${Glog_INCLUDE_DIRS})
 
 # flags

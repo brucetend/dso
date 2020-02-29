@@ -10,6 +10,15 @@
 ## 1. Installation
 Please follow https://github.com/JakobEngel/dso.
 
+## 1.1 Build in ROS
+### Glog
+Please refer to [INSTALL.md](https://github.com/google/glog/blob/master/cmake/INSTALL.md), section **Building Glog with CMake**. The last step must be executed with **sudo** in order to install **Glog** into the system directory.  
+### Catkin
+Just run:
+    ```
+    bash catkin_make
+    ```
+
 ## 2. Usage
 1. Modify the bash file
 
